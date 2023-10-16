@@ -1,4 +1,4 @@
-# MOCHA_SIGAISA2023
+# MOCHA_SIGASIA2023
 
 Official implementation of 'MOCHA: Real-Time Motion Characterization via Context Matching'.
 
