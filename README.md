@@ -1,5 +1,8 @@
 # MOCHA_SIGAISA2023
 
-Official implementation of 'MOCHA: Real-Time Motion Characterization via Context Matching'.
+This is the repository that contains source code for the [MOCHA website]().
 
-Code is available soon 😁
+If you find MOVIN useful for your work please cite:
+```
+
+```

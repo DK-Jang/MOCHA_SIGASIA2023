@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="MOCHA enables real-time motion characterization.">
+  <meta name="keywords" content="Motion style transfer, Character animation, Generative-AI">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MOCHA: Real-Time Motion Characterization via Context Matching</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+  <link rel="icon" href="static/images/TTibu1.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">MOCHA: Real-Time Motion Characterization via Context Matching</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://dk-jang.github.io">Deok-Kyeong Jang</a><sup>1,4</sup>, </span>
+            <span class="author-block">
+              <a href="http://yutingye.info/index.html">Yuting Ye</a><sup>2</sup>, </span>
+            <span class="author-block">
+              <a href="https://sites.google.com/view/snuimo/home">Jungdam Won</a><sup>3</sup>, </span>
+            <span class="author-block">
+              <a href="https://lava.kaist.ac.kr/?page_id=41">Sung-Hee Lee</a><sup>1*</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>KAIST </span>
+            <span class="author-block"><sup>2</sup>Meta Reality Labs </span>
+            <span class="author-block"><sup>3</sup>SNU </span>
+            <span class="author-block"><sup>4</sup>MOVIN Inc. </span>
+          </div>
+          <div class="is-size-6 contribution">
+            <span class="author-block"><sup>*</sup>Corresponding author</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2310.10079"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/2nnEAwHMZNI?si=ChjNiooTKkdhvUVI"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/DK-Jang/MOCHA_SIGASIA2023"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code & Data (coming soon)</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video> -->
+      <img src="static/images/teaser.png"/>
+      <h2 class="subtitle has-text-centered">
+        Our characterization framework transforms neutral motions to express distinct style of characters in real-time.
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Transforming neutral, characterless input motions to embody the distinct style of a notable character in real time is highly compelling for character animation.
+          </p>
+          <p>
+            This paper introduces MOCHA, a novel online motion characterization framework that transfers both motion styles and body proportions from a target character to an input source motion. MOCHA begins by encoding the input motion into a motion feature that structures the body part topology and captures motion dependencies for effective characterization. Central to our framework is the Neural Context Matcher, which generates a motion feature for the target character with the most similar context to the input motion feature. The conditioned autoregressive model of the Neural Context Matcher can produce temporally coherent character features in each time frame. To generate the final characterized pose, our Characterizer network incorporates the characteristic aspects of the target motion feature into the input motion feature while preserving its context. This is achieved through a transformer model that introduces the adaptive instance normalization and context mapping-based cross-attention, effectively injecting the character feature into the source feature.
+          </p>
+          <p>
+            We validate the performance of our framework through comparisons with prior work and an ablation study. Our framework can easily accommodate various applications, including characterization with only sparse input and real-time characterization. Additionally, we contribute a high-quality motion dataset comprising six different characters performing a range of motions, which can serve as a valuable resource for future research.  
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Overall architecture -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+          <h2 class="title is-3">Overall framework</h2>
+          <img src="./static/images/overview.png"/>
+          <div class="content has-text-justified">
+            <p>
+              Network configuration. 
+              (a) Overall architecture for motion characterization in run-time. 
+              Our framework consists of bodypart encoder, neural context matcher, and characterizer networks. 
+              (b) Detail of the characterizer transformer decoder block (𝐷𝑐).
+            </p>
+          </div>
+      </div>
+    </div>
+    <!--/ Overall architecture. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <!-- <iframe src="https://www.youtube.com/embed/C0o8Hz4FFTk"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/2nnEAwHMZNI?si=UqxbZSAkanEnMPCw" 
+          title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+
+<!-- Video carousel -->
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Qualitative evaluation</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-walking">
+          <video poster="" id="walking" autoplay controls muted loop height="100%">
+            <!-- Your video file here -->
+            <source src="./static/videos/walking.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-running">
+          <video poster="" id="running" autoplay controls muted loop height="100%">
+            <!-- Your video file here -->
+            <source src="./static/videos/running.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-jumping">
+          <video poster="" id="jumping" autoplay controls muted loop height="100%">
+            <!-- Your video file here -->
+            <source src="./static/videos/jumping.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-sitting">
+          <video poster="" id="sitting" autoplay controls muted loop height="100%">
+            <!-- Your video file here -->
+            <source src="static/videos/sitting.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-crawling">
+          <video poster="" id="crawling" autoplay controls muted loop height="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/crawling.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End video carousel -->
+
+
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Input from unseen subjects</h2>
+          <p>
+            Our framework works successfully even when motions from unseen subjects with different body proportions are given as input.
+          </p>
+          <video id="unseen1" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/unseen1.mp4"
+                    type="video/mp4">
+          </video>
+          <video id="unseen1" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/unseen2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Sparse input</h2>
+          <p>
+            Our framework could work with sparse inputs from the hip and end-effectors as they may contain essential information about context and style.
+          </p>
+          <video id="sparse1" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/sparse1.mp4"
+                    type="video/mp4">
+          </video>
+          <video id="sparse2" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/sparse2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+    
+    </div>
+
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Live characterization from streamed motion data</h2>
+
+        <!-- Interpolating. -->
+        <!-- <h3 class="title is-4">Interpolating states</h3>
+        <div class="content has-text-justified">
+          <p>
+            We can also animate the scene by interpolating the deformation latent codes of two input
+            frames. Use the slider here to linearly interpolate between the left frame and the right
+            frame.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_start.jpg"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Start Frame</p>
+          </div>
+          <div class="column interpolation-video-column">
+            <div id="interpolation-image-wrapper">
+              Loading...
+            </div>
+            <input class="slider is-fullwidth is-large is-info"
+                   id="interpolation-slider"
+                   step="1" min="0" max="100" value="0" type="range">
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_end.jpg"
+                 class="interpolation-image"
+                 alt="Interpolation end reference image."/>
+            <p class="is-bold">End Frame</p>
+          </div>
+        </div>
+        <br/> -->
+        <!--/ Interpolating. -->
+
+        <!-- Live. -->
+        <div class="content has-text-justified">
+          <p>
+            We demonstrate the ability of our framework to characterize streamed motion data in real-time. 
+            Video shows live characterization of a streamed motion captured with Xsens Awinda sensor. 
+            Our method can produce successfully characterized motion even with network delays and noisy input data.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video id="livestream" autoplay controls muted loop playsinline width="75%">
+            <source src="static/videos/livestream.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <!--/ Live. -->
+
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+
+    <!-- Concurrent Work. -->
+    <!-- <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            If you are interested in AI powered markerless LiDAR based motion capture, check out our website, <a href="https://www.movin3d.com">MOVIN Inc.</a>
+          </p>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code></code></pre>
+    <!-- <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre> -->
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <!-- <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div> -->
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            It is based on the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies website</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
