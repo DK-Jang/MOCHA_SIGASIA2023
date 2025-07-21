@@ -1,0 +1,67 @@
+# name
+name: 'model_ours'
+
+# data paths
+data_dir: './datasets/mocha60/'
+dataset:
+    mocha:
+        parents: [-1, 0, 1, 2, 3, 0, 5, 6, 7, 8, 9, 10, 11, 8, 13, 14, 8, 16, 17, 18, 0, 20, 21, 22]    # excluding root joint
+        input_joint_idx: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+                          17, 18, 19, 20, 21, 22, 23]     # excluding root joint
+
+# model options
+model:
+    # embedding
+    mot_in_dim: 15
+    nframes: 60
+    njoints: 24     #  excluding root joint
+    nbody: 6
+    temporal_patch_size: 4
+
+    # transformer
+    encoder_dim: 256
+    encoder_depth: 2
+    encoder_heads: 4
+    encoder_dim_head: 128
+    encoder_mlp_dim: 512
+    decoder_dim: 256
+    decoder_depth: 2
+    decoder_heads: 4
+    decoder_dim_head: 256
+    decoder_mlp_dim: 512
+
+    # projection
+    prj_dim: 1024
+    num_patches: -1     # -1: all pathces
+
+    # discriminator
+    num_classes: 6
+    
+    # for graph convolution
+    graph:
+        joint: {'layout': 'mocha', 'strategy': 'distance', 'max_hop': 2}
+        bodypart: {'layout': 'mocha', 'strategy': 'distance', 'max_hop': 1}
+
+
+# training arguments
+manualSeed: 1777
+num_workers: 4
+max_epochs: 125
+batch_size: 64
+lr_gen: 0.0001
+lr_dis: 0.0001
+lr_prj: 0.0001
+weight_decay_gen: 0.0001
+weight_decay_dis: 0.0001
+weight_decay_prj: 0.0001
+lr_drop: 100
+nce_includes_all_negatives_from_minibatch: True
+
+# loss functions
+rec_w: 1
+nce_w: 0.1
+cyc_w: 1
+
+# step size
+log_every: 5       # iter
+save_every: 25       # epoch
