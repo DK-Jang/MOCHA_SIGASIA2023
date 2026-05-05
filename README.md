@@ -51,3 +51,8 @@ Generated motions(bvh format) will be placed under `./results`. <br>
 This repository contains pieces of code from the following repositories: \
 [Learned Motion Matching](https://github.com/orangeduck/Motion-Matching). \
 [Motion Puzzle: Arbitrary Motion Style Transfer by Body Part](https://github.com/DK-Jang/motion_puzzle).
+
+## License
+Copyright (c) Meta Platforms, Inc. and affiliates.
+
+This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0). See [LICENSE](LICENSE) for details.
